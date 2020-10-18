@@ -7,21 +7,21 @@ export function List() {
         id: "",
         name: ""
     })
-    const [details, setDetails] = useState([])
+    // const [details, setDetails] = useState([])
 
     useEffect(()=>{
         fetch(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/users.json`)
-                .then(response=> response.json())
-                .then(json => setUsers(json))
+            .then(response=> response.json())
+            .then(json => setUsers(json))
     }, [])
 
-    useEffect(()=>{
-        if(info.id !== "") {
-            fetch(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${info.id}.json`)
-                .then(response=> response.json())
-                .then(result => setDetails(result))
-        }
-    }, [info])
+    // useEffect(()=>{
+    //     if(info.id !== "") {
+    //         fetch(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${info.id}.json`)
+    //             .then(response=> response.json())
+    //             .then(result => setDetails(result))
+    //     }
+    // }, [info])
 
     function findUser(name) {
         return user => user.name === name
@@ -38,7 +38,7 @@ export function List() {
             <ul>
                 {users.map((user,i)=><li key={i} onClick={itemHandler}>{user.name}</li>)}
             </ul>
-            <Details props={details}/>
+            <Details props={info}/>
         </div>
     )
 }
