@@ -3,11 +3,8 @@ import {Details} from "./Details";
 
 export function List() {
     const [users,setUsers] = useState([])
-    const [info,setInfo] = useState({
-        id: "",
-        name: ""
-    })
-    // const [details, setDetails] = useState([])
+    const [info,setInfo] = useState(null)
+
 
     useEffect(()=>{
         fetch(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/users.json`)
@@ -15,13 +12,6 @@ export function List() {
             .then(json => setUsers(json))
     }, [])
 
-    // useEffect(()=>{
-    //     if(info.id !== "") {
-    //         fetch(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${info.id}.json`)
-    //             .then(response=> response.json())
-    //             .then(result => setDetails(result))
-    //     }
-    // }, [info])
 
     function findUser(name) {
         return user => user.name === name
