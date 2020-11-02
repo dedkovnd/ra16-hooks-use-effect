@@ -18,15 +18,14 @@ export function List() {
     }
 
     const itemHandler = evt => {
-        const eventUser = users.filter(findUser(evt.target.innerHTML))
+        const eventUser = users.filter(findUser(evt))
         setInfo({id: eventUser[0].id, name: eventUser[0].name})
     }
-
 
     return (
         <div>
             <ul>
-                {users.map((user,i)=><li key={i} onClick={itemHandler}>{user.name}</li>)}
+                {users.map((user,i)=><li key={i} onClick={()=>itemHandler(user.name)}>{user.name}</li>)}
             </ul>
             <Details props={info}/>
         </div>
